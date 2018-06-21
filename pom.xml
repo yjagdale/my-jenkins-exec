@@ -37,6 +37,12 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-maven-plugin</artifactId>
+                <version>3.5.33</version>
+            </plugin>
+
         </plugins>
         <pluginManagement>
             <plugins>
@@ -141,6 +147,8 @@
             <version>3.0</version>
             <scope>test</scope>
         </dependency>
+
+
 
         <dependency>
             <groupId>org.apache.poi</groupId>

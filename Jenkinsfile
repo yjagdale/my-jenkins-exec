@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('Compile Stage') {
+        stage ('Build Application') {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
@@ -11,7 +11,7 @@ pipeline {
             }
         }
 
-        stage ('Testing Stage') {
+        stage ('Execute Selenium') {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
@@ -19,6 +19,25 @@ pipeline {
                 }
             }
         }
+
+
+        stage ('Cluster Start') {
+
+            steps {
+                withMaven(maven : 'maven_3_5_0') {
+                    sh 'mvn fabric8:cluster-start'
+                }
+            }
+        }
+
+         stage ('Deploy docker Image') {
+
+                    steps {
+                        withMaven(maven : 'maven_3_5_0') {
+                            sh 'mvn fabric8:deploy'
+                        }
+                    }
+                }
     }
     post {
       always {
