@@ -2,28 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('Build Application') {
-
-            steps {
-                    sh 'mvn clean compile'
-            }
-        }
-
-        stage ('Execute Selenium') {
-
-            steps {
-                    sh 'mvn test'
-            }
-        }
-
-
-        stage ('Cluster Start') {
-
-            steps {
-               
-                sh 'mvn fabric8:cluster-start'
-            }
-        }
+      
 
          stage ('Deploy docker Image') {
 
